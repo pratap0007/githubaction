@@ -1,0 +1,20 @@
+name: CI Pipeline 
+
+on: [push,pull_request] # Runs on push and PR events
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # Use the Ubuntu as OS 
+    steps:
+      - name: Checkout Respository 
+        uses: actions/checkout@v3 # Checks out your repository code 
+      - name: Setup go version 
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.23' # use a specific go version 
+      - name: Install the dependency 
+        run: go mod tidy  # Install the dependency 
+      - name: Build the code base 
+        run: go build -o dashboard ./cmd
+      - name: Run Tests 
+        run: go test ./...
