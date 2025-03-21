@@ -15,6 +15,8 @@ jobs:
       - name: Install the dependency 
         run: go mod tidy  # Install the dependency 
       - name: Build the code base 
-        run: go build -o dashboard ./cmd
+        run: go build -o dash_bin ./cmd
       - name: Run Tests 
         run: go test ./...
+      - name: Clean Binary 
+        run: rm dash_bin
