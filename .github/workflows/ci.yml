@@ -18,5 +18,5 @@ jobs:
         run: go build -o dash_bin ./cmd
       - name: Run Tests 
         run: go test ./...
-      - name: Clean Binary 
+      - name: Clean Binary
         run: rm dash_bin
